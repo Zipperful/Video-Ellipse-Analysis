@@ -1,0 +1,11 @@
+sample.interval=20000
+"FUN" "lapply" "findLocalsList1" "findLocalsList" "funEnv" "make.functionContext" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findHoughEllipses" 
+"checkSkipLoopCntxtList" "checkSkipLoopCntxt" "checkSkipLoopCntxtList" "checkSkipLoopCntxt" "h" "tryInline" "cmpCall" "cmp" "h" "tryInline" "cmpCall" "cmp" "cmpForBody" "h" "tryInline" "cmpCall" "cmp" "h" "tryInline" "cmpCall" "cmp" "genCode" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findHoughEllipses" 
+"findCenvVar" "getInlineInfo" "tryInline" "cmpCall" "cmp" "cmpSymbolAssign" "h" "tryInline" "cmpCall" "cmp" "h" "tryInline" "cmpCall" "cmp" "genCode" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "bFind" "findHoughEllipses" 
+"doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "<Anonymous>" "%in%" "findLocals1" "lapply" "FUN" "lapply" "findLocalsList1" "findLocalsList" "funEnv" "make.functionContext" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findAxisAVals" "findHoughEllipses" 
+"doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "<Anonymous>" "%in%" "findLocals1" "lapply" "FUN" "lapply" "findLocalsList1" "findLocalsList" "funEnv" "make.functionContext" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findAxisAVals" "findHoughEllipses" 
+"%in%" "findLocals1" "lapply" "FUN" "lapply" "findLocalsList1" "findLocalsList" "funEnv" "make.functionContext" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findAxisAVals" "findHoughEllipses" 
+"checkSkipLoopCntxtList" "checkSkipLoopCntxt" "checkSkipLoopCntxtList" "checkSkipLoopCntxt" "checkSkipLoopCntxtList" "checkSkipLoopCntxt" "h" "tryInline" "cmpCall" "cmp" "h" "tryInline" "cmpCall" "cmp" "cmpForBody" "h" "tryInline" "cmpCall" "cmp" "h" "tryInline" "cmpCall" "cmp" "genCode" "cmpfun" "doTryCatch" "tryCatchOne" "tryCatchList" "tryCatch" "compiler:::tryCmpfun" "findAxisAVals" "findHoughEllipses" 
+"findHoughEllipses" 
+".External2" "write.table" "eval" "eval" "eval.parent" "write.csv" "browser" "eval" "eval" ".rs.breakOnError" "<Anonymous>" "do.call" "findHoughEllipses" 
+"browser" "eval" "eval" ".rs.breakOnError" "<Anonymous>" "do.call" "findHoughEllipses" 
