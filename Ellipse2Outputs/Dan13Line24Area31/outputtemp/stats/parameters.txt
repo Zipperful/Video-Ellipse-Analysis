@@ -1,0 +1,5 @@
+Scale Parameter:  2
+Alpha Parameter:  0.2
+Sigma Parameter:  1
+Length Cutoff Parameter:  24
+Line Area Cutoff Parameter:  3

@@ -1,0 +1,8 @@
+sample.interval=20000
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"!" "NextMethod" "[<-.cimg" "[<-" 
+"apply" "t" "rotMatrixCW" 
