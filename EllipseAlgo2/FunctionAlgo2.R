@@ -5,7 +5,7 @@ library(dplyr)
 library(OpenImageR)
 library(VideoTrackingUtilities)
 
-# pathImageToLoad <- "./Test Pics/Danbooru8-6-20-1235pmEST/test2.jpg"
+# pathImageToLoad <- "./Test Pics/Danbooru8-6-20-1235pmEST/test13.jpg"
 # pathFolderToMake = "SketchDanb2Output"
 # paramScale=4
 # paramAlpha=0.2
@@ -17,9 +17,10 @@ runJiaFanEllipses <- function(pathImageToLoad,
                               pathFolderToMake = "outputtemp", 
                               paramScale=2, 
                               paramAlpha=0.2, 
-                              paramSigma=2, 
+                              paramSigma=1, 
                               paramLengthCutoff=16, 
-                              paramLineArea=2){
+                              paramLineArea=4,
+                              paramCNC=0.2){
   #Documentation:
       #paramScale, paramAlpha, paramSigma, paramLengthCutoff, paramLineArea
   
@@ -176,14 +177,18 @@ runJiaFanEllipses <- function(pathImageToLoad,
   for(x in 1:length(mtCont1)){
     mtExtremaPosAreas[[x]] <- findTriangleArea(c(mtExtremaPos[[x]])) / nrow(mtCont1[[x]])
   }
-  mtCurvesPos <- mtCont1[ abs(unlist(mtExtremaPosAreas))>threshLine]
-  mtCurvesNeg <- mtCont2[ abs(unlist(mtExtremaNegAreas))>threshLine]
-  print(mtExtremaPosAreas)
+  posThreshLines <-abs(unlist(mtExtremaPosAreas))>threshLine
+  negThreshLines <-abs(unlist(mtExtremaNegAreas))>threshLine
+  mtCont1 <- mtCont1[ posThreshLines]
+  mtCont2 <- mtCont2[ negThreshLines]
+  mtExtremaPos <- mtExtremaPos[ posThreshLines ]
+  mtExtremaNeg <- mtExtremaNeg[ negThreshLines ]
+  
   Rprof(NULL)
   
   #-----------------------------------------------------------------------------------------------------------------------------
   #Garbage Collecting
-  rm(grayTest, dx,dy,tau, tau1, tau1rot, tau2, mtExtremaNegAreas, mtExtremaPosAreas)
+  # rm(grayTest, dx,dy,tau, tau1, tau1rot, tau2, mtExtremaNegAreas, mtExtremaPosAreas)
   #}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
   
   
@@ -211,7 +216,7 @@ runJiaFanEllipses <- function(pathImageToLoad,
   
   Rprof(NULL)
   #Garbage Collecting
-  rm(concavities13, concavities24, mtCont1, mtCont2, mtExtremaNeg, mtExtremaPos)
+  # rm(concavities13, concavities24, mtCont1, mtCont2, mtExtremaNeg, mtExtremaPos)
   #-----------------------------------------------------------------------------------------------------------------------------
   #}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
   
@@ -225,8 +230,67 @@ runJiaFanEllipses <- function(pathImageToLoad,
   print("Matching Those Contour Pairs That Could Describe an Ellipse... (ContourMatching.prof)...")
   Rprof("ContourMatching.prof")
   
-
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  #Order Pts1 by decreasing x,y
+  for(x in 1:length(pts1)){
+    pts1[[x]] <- pts1[[x]][order(pts1[[x]][,1], decreasing=TRUE),]
+  }
+  #Order Pts2 by decreasing x, increasing y
+  for(x in 1:length(pts2)){
+    pts2[[x]] <- pts2[[x]][order(pts2[[x]][,2]),]
+  }
+  #Order Pts3 by increasing x,y
+  for(x in 1:length(pts3)){
+    pts3[[x]] <- pts3[[x]][order(pts3[[x]][,1]),]
+  }
+  #Order Pts4 by increasing x, decreasing y
+  for(x in 1:length(pts4)){
+    pts4[[x]] <- pts4[[x]][order(pts4[[x]][,1]),]
+  }
   
+  #Matching Pts1 to Pts2- pts1esx > pts2etx
+  pairs12 <- vector(mode = "list", length=length(pts1)*length(pts2))
+  for(x in 1:length(pts1)){
+    for(y in 1:length(pts2)){
+      if(pts1[[x]][3,1] >= pts2[[y]][1,1]){
+        pairs12[[(x-1)*length(pts2)+y]] <- c(x,y)
+      }
+    }
+  }
+  pairs12 <- pairs12[!sapply(pairs12, is.null)]
+  
+  #Matching Pts1 to Pts4- pts1ety < pts4ety
+  pairs14 <- vector(mode = "list", length=length(pts1)*length(pts4))
+  for(x in 1:length(pts1)){
+    for(y in 1:length(pts4)){
+      if(pts1[[x]][1,2] <= pts4[[y]][3,2]){
+        pairs14[[(x-1)*length(pts4)+y]] <- c(x,y)
+      }
+    }
+  }
+  pairs14 <- pairs14[!sapply(pairs14, is.null)]
+  
+  #Matching Pts3 to Pts2- pts3esy > pts2esy
+  pairs32 <- vector(mode = "list", length=length(pts3)*length(pts2))
+  for(x in 1:length(pts3)){
+    for(y in 1:length(pts2)){
+      if(pts3[[x]][1,2] >= pts2[[y]][3,2]){
+        pairs32[[(x-1)*length(pts2)+y]] <- c(x,y)
+      }
+    }
+  }
+  pairs32 <- pairs32[!sapply(pairs32, is.null)]
+  
+  #Matching Pts3 to Pts4- pts3etx < pts4esx
+  pairs34 <- vector(mode = "list", length=length(pts3)*length(pts4))
+  for(x in 1:length(pts3)){
+    for(y in 1:length(pts4)){
+      if(pts3[[x]][3,1] <= pts4[[y]][1,1]){
+        pairs34[[(x-1)*length(pts4)+y]] <- c(x,y)
+      }
+    }
+  }
+  pairs34 <- pairs34[!sapply(pairs34, is.null)]
   
   Rprof(NULL)
   #Garbage Collecting
@@ -238,14 +302,135 @@ runJiaFanEllipses <- function(pathImageToLoad,
   #Calculating CNC for Each Pair
   #{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
   #-----------------------------------------------------------------------------------------------------------------------------
+  threshCNC <- paramCNC
   #Calculating Characteristic Number Cutoff (CNC) for Every Possible Pair of Ellipses and Thresholding
   print(Sys.time() - start)
   print("Calculating and Thresholding Possilbe Ellipses Based on CNC ... (CNCThresholding.prof)...")
   Rprof("CNCThresholding.prof")
   
+  #Finding CNC Values for each pair in quadrants 1 and 2, and thresholding with paramCNC
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  #Line1 e2s e2m, Line2 e2t e1s, Line3 e1m e1t
   
+  #Making Empty Matrix of 0's to store CNC values in
+  CNC12 <- matrix(rep(0, length(pairs12)*3), ncol=3)
   
+  for(x in 1:length(pairs12)){
+    m <- pairs12[[x]][1]
+    n <- pairs12[[x]][2]
+    
+    #Calculating Intersections of 3 lines made by the six extrema points
+    P12 <- findIntersectionfromPts(pts2[[n]][3,], pts2[[n]][2,], pts2[[n]][1,], pts1[[m]][3,])
+    P23 <- findIntersectionfromPts(pts2[[n]][1,], pts1[[m]][3,], pts1[[m]][2,], pts1[[m]][1,])
+    P31 <- findIntersectionfromPts(pts1[[m]][2,], pts1[[m]][1,], pts2[[n]][3,], pts2[[n]][2,])
+    
+    #Expressing each of 6 points (Q1-Q6) as linear combinations of two of the intersection points(P12, P23, P31) 
+    # that it passes through with format Q = alph* Pa + bet* Pb
+    alphbetA <- calcPointLinearCombination(pts2[[n]][3,], P31, P12)
+    alphbetB <- calcPointLinearCombination(pts2[[n]][2,], P31, P12)
+    alphbetC <- calcPointLinearCombination(pts2[[n]][1,], P12, P23)
+    alphbetD <- calcPointLinearCombination(pts1[[m]][3,], P12, P23)
+    alphbetE <- calcPointLinearCombination(pts1[[m]][2,], P23, P31)
+    alphbetF <- calcPointLinearCombination(pts1[[m]][1,], P23, P31)
+    
+    #Finding Characteristic Number for Conic CNC by multiplying bets together and dividing by alphs
+    CNC <- alphbetA[2]*alphbetB[2]*alphbetC[2]*alphbetD[2]*alphbetE[2]*alphbetF[2]/alphbetA[1]/alphbetB[1]/alphbetC[1]/alphbetD[1]/alphbetE[1]/alphbetF[1]
+    
+    #Removing those not close enough the the CNC value of 1 for ellipses
+    if(abs(1-CNC) <= threshCNC){
+      CNC12[x,] <- c(CNC, m, n)
+    }
+  }
+  #Removing Empty Rows of CNC Matrix
+  CNC12 <- CNC12[ CNC12[,2] !=0 ,]
   
+  #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
+  #Explanation of each part of loop can be found in CNC12 example above
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  #Line1 e1s e1m, Line2 e1t e4t, Line3 e4m e4s
+  CNC14 <- matrix(rep(0, length(pairs14)*3), ncol=3)
+  
+  for(x in 1:length(pairs14)){
+    m <- pairs14[[x]][1]
+    n <- pairs14[[x]][2]
+    
+    P12 <- findIntersectionfromPts(pts1[[m]][3,], pts1[[m]][2,], pts1[[m]][1,], pts4[[n]][3,])
+    P23 <- findIntersectionfromPts(pts1[[m]][1,], pts4[[n]][3,], pts4[[n]][2,], pts4[[n]][1,])
+    P31 <- findIntersectionfromPts(pts4[[n]][2,], pts4[[n]][1,], pts1[[m]][3,], pts1[[m]][2,])
+    alphbetA <- calcPointLinearCombination(pts1[[m]][3,], P31, P12)
+    alphbetB <- calcPointLinearCombination(pts1[[m]][2,], P31, P12)
+    alphbetC <- calcPointLinearCombination(pts1[[m]][1,], P12, P23)
+    alphbetD <- calcPointLinearCombination(pts4[[n]][3,], P12, P23)
+    alphbetE <- calcPointLinearCombination(pts4[[n]][2,], P23, P31)
+    alphbetF <- calcPointLinearCombination(pts4[[n]][1,], P23, P31)
+    
+    CNC <- alphbetA[2]*alphbetB[2]*alphbetC[2]*alphbetD[2]*alphbetE[2]*alphbetF[2]/alphbetA[1]/alphbetB[1]/alphbetC[1]/alphbetD[1]/alphbetE[1]/alphbetF[1]
+    
+    if(abs(1-CNC) <= threshCNC){
+      CNC14[x,] <- c(CNC, m, n)
+    }
+  }
+  CNC14 <- CNC14[ CNC14[,2] !=0 ,]
+  
+  #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
+  #Explanation of each part of loop can be found in CNC12 example above
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  #Line1 e3t e3m, Line2 e3s e2s, Line3 e2m e2t
+  CNC32 <- matrix(rep(0, length(pairs32)*3), ncol=3)
+  
+  for(x in 1:length(pairs32)){
+    m <- pairs32[[x]][1]
+    n <- pairs32[[x]][2]
+    
+    P12 <- findIntersectionfromPts(pts3[[m]][3,], pts3[[m]][2,], pts3[[m]][1,], pts2[[n]][3,])
+    P23 <- findIntersectionfromPts(pts3[[m]][1,], pts2[[n]][3,], pts2[[n]][2,], pts2[[n]][1,])
+    P31 <- findIntersectionfromPts(pts2[[n]][2,], pts2[[n]][1,], pts3[[m]][3,], pts3[[m]][2,])
+    alphbetA <- calcPointLinearCombination(pts3[[m]][3,], P31, P12)
+    alphbetB <- calcPointLinearCombination(pts3[[m]][2,], P31, P12)
+    alphbetC <- calcPointLinearCombination(pts3[[m]][1,], P12, P23)
+    alphbetD <- calcPointLinearCombination(pts2[[n]][3,], P12, P23)
+    alphbetE <- calcPointLinearCombination(pts2[[n]][2,], P23, P31)
+    alphbetF <- calcPointLinearCombination(pts2[[n]][1,], P23, P31)
+    
+    CNC <- alphbetA[2]*alphbetB[2]*alphbetC[2]*alphbetD[2]*alphbetE[2]*alphbetF[2]/alphbetA[1]/alphbetB[1]/alphbetC[1]/alphbetD[1]/alphbetE[1]/alphbetF[1]
+    
+    if(abs(1-CNC) <= threshCNC){
+      CNC32[x,] <- c(CNC, m, n)
+    }
+  }
+  CNC32 <- CNC32[ CNC32[,2] !=0 ,]
+  
+  #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
+  #Explanation of each part of loop can be found in CNC12 example above
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  #Line1 e3s e3m, Line2 e3t e4s, Line3 e4m e4t
+  CNC34 <- matrix(rep(0, length(pairs34)*3), ncol=3)
+  
+  for(x in 1:length(pairs34)){
+    m <- pairs34[[x]][1]
+    n <- pairs34[[x]][2]
+    P12 <- findIntersectionfromPts(pts3[[m]][1,], pts3[[m]][2,], pts3[[m]][3,], pts4[[n]][1,])
+    P23 <- findIntersectionfromPts(pts3[[m]][3,], pts4[[n]][1,], pts4[[n]][2,], pts4[[n]][3,])
+    P31 <- findIntersectionfromPts(pts4[[n]][2,], pts4[[n]][3,], pts3[[m]][1,], pts3[[m]][2,])
+    alphbetA <- calcPointLinearCombination(pts3[[m]][1,], P31, P12)
+    alphbetB <- calcPointLinearCombination(pts3[[m]][2,], P31, P12)
+    alphbetC <- calcPointLinearCombination(pts3[[m]][3,], P12, P23)
+    alphbetD <- calcPointLinearCombination(pts4[[n]][1,], P12, P23)
+    alphbetE <- calcPointLinearCombination(pts4[[n]][2,], P23, P31)
+    alphbetF <- calcPointLinearCombination(pts4[[n]][3,], P23, P31)
+    
+    CNC <- alphbetA[2]*alphbetB[2]*alphbetC[2]*alphbetD[2]*alphbetE[2]*alphbetF[2]/alphbetA[1]/alphbetB[1]/alphbetC[1]/alphbetD[1]/alphbetE[1]/alphbetF[1]
+    
+    if(abs(1-CNC) <= threshCNC){
+      CNC34[x,] <- c(CNC, m, n)
+    }
+  }
+  CNC34 <- CNC34[ CNC34[,2] !=0 ,]
+  print(CNC12[1:3,])
   Rprof(NULL)
   #Garbage Collecting
   #-----------------------------------------------------------------------------------------------------------------------------
@@ -253,16 +438,14 @@ runJiaFanEllipses <- function(pathImageToLoad,
   
   
   
+  
   #Estimating Ellipse Centers for Each Valid Contour Pair
   #{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
   #-----------------------------------------------------------------------------------------------------------------------------
-  #PCalculating Centers of Each Probable Ellipse Pair
+  #Calculating Centers of Each Probable Ellipse Pair
   print(Sys.time() - start)
   print("Calculating Centers of Possible Ellipses Passing CNC Threshold Check... (CenterCalculation.prof)...")
   Rprof("CenterCalculation.prof")
-  
-  
-  
   
   Rprof(NULL)
   #Garbage Collecting
@@ -279,9 +462,6 @@ runJiaFanEllipses <- function(pathImageToLoad,
   print("Matching Those Contour Pairs That Could Describe an Ellipse... (EllipseParameters.prof)...")
   Rprof("EllipseParameters.prof")
   
-  
-  
-  
   Rprof(NULL)
   #Garbage Collecting
   #-----------------------------------------------------------------------------------------------------------------------------
@@ -296,9 +476,6 @@ runJiaFanEllipses <- function(pathImageToLoad,
   print(Sys.time() - start)
   print("Parsing Ellipse Constants to Find Only Those We Want... (EllipseParsing.prof)...")
   Rprof("EllipseParsing.prof")
-  
-  
-  
   
   Rprof(NULL)
   #Garbage Collecting
@@ -372,4 +549,4 @@ saveCurrentOutputFolder <- function(folder,number){
   file.copy("./outputtemp/", paste0("Ellipse2Outputs/",folder,number), recursive = TRUE)
 }
 
-runJiaFanEllipses("./Test Pics/Danbooru8-6-20-1235pmEST/test2.jpg", paramLineArea = 0.5)
+runJiaFanEllipses("./Test Pics/Danbooru8-6-20-1235pmEST/test13.jpg")

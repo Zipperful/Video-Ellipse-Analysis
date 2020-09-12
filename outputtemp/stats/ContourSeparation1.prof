@@ -1,3 +1,3 @@
 sample.interval=20000
-"[<-.cimg" "[<-" 
-"aperm" "apply" "t" "rotMatrixCW" 
+"NextMethod" "[<-.cimg" "[<-" "runJiaFanEllipses" 
+"apply" "t" "rotMatrixCW" "runJiaFanEllipses" 

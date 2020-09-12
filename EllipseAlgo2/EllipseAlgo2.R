@@ -209,7 +209,7 @@ paramCNC = 0.2
   mtCont2 <- mtCont2[ negThreshLines]
   mtExtremaPos <- mtExtremaPos[ posThreshLines ]
   mtExtremaNeg <- mtExtremaNeg[ negThreshLines ]
-  # print(mtExtremaPosAreas)
+  
   Rprof(NULL)
   
   #-----------------------------------------------------------------------------------------------------------------------------
