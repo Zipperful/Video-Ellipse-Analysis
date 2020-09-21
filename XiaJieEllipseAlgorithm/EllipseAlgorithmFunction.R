@@ -342,8 +342,17 @@ runJiaFanEllipses <- function(pathImageToLoad,
       CNC12[x,] <- c(CNC, m, n)
     }
   }
-  #Removing Empty Rows of CNC Matrix
+  #Removing Empty Rows of CNC Matrix and Saving List of contour pair indexes, contour pairs, and extrema of pairs
   CNC12 <- CNC12[ CNC12[,2] !=0 ,]
+  pairs12 <- vector(mode = "list", length=nrow(CNC12))
+  pts12 <- vector(mode = "list", length=nrow(CNC12))
+  conts12 <- vector(mode = "list", length=nrow(CNC12))
+  for(x in 1:nrow(CNC12)) {
+    pairs12[[x]] <- CNC12[x,2:3]
+    pts12[[x]] <- list(pts1[[CNC12[x,2]]], pts2[[CNC12[x,3]]])
+    conts12[[x]] <- list(conts1[[CNC12[x,2]]], conts2[[CNC12[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -373,6 +382,15 @@ runJiaFanEllipses <- function(pathImageToLoad,
     }
   }
   CNC14 <- CNC14[ CNC14[,2] !=0 ,]
+  pairs14 <- vector(mode = "list", length=nrow(CNC14))
+  pts14 <- vector(mode = "list", length=nrow(CNC14))
+  conts14 <- vector(mode = "list", length=nrow(CNC14))
+  for(x in 1:nrow(CNC14)) {
+    pairs14[[x]] <- CNC14[x,2:3]
+    pts14[[x]] <- list(pts1[[CNC14[x,2]]], pts4[[CNC14[x,3]]])
+    conts14[[x]] <- list(conts1[[CNC14[x,2]]], conts4[[CNC14[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -402,6 +420,15 @@ runJiaFanEllipses <- function(pathImageToLoad,
     }
   }
   CNC32 <- CNC32[ CNC32[,2] !=0 ,]
+  pairs32 <- vector(mode = "list", length=nrow(CNC32))
+  pts32 <- vector(mode = "list", length=nrow(CNC32))
+  conts32 <- vector(mode = "list", length=nrow(CNC32))
+  for(x in 1:nrow(CNC32)) {
+    pairs32[[x]] <- CNC32[x,2:3]
+    pts32[[x]] <- list(pts3[[CNC32[x,2]]], pts2[[CNC32[x,3]]])
+    conts32[[x]] <- list(conts3[[CNC32[x,2]]], conts2[[CNC32[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -430,12 +457,20 @@ runJiaFanEllipses <- function(pathImageToLoad,
     }
   }
   CNC34 <- CNC34[ CNC34[,2] !=0 ,]
-  print(CNC12[1:3,])
+  pairs34 <- vector(mode = "list", length=nrow(CNC34))
+  pts34 <- vector(mode = "list", length=nrow(CNC34))
+  conts34 <- vector(mode = "list", length=nrow(CNC34))
+  for(x in 1:nrow(CNC34)) {
+    pairs34[[x]] <- CNC34[x,2:3]
+    pts34[[x]] <- list(pts3[[CNC34[x,2]]], pts4[[CNC34[x,3]]])
+    conts34[[x]] <- list(conts3[[CNC34[x,2]]], conts4[[CNC34[x,3]]])
+  }
+  
   Rprof(NULL)
+  
   #Garbage Collecting
   #-----------------------------------------------------------------------------------------------------------------------------
-  #}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} 
-  
+  #}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}  
   
   
   
@@ -541,12 +576,12 @@ runJiaFanEllipses <- function(pathImageToLoad,
 }
 
 saveCurrentOutputFolder <- function(folder,number){
-  if(file.exists(paste0("Ellipse2Outputs/",folder,number))){
+  if(file.exists(paste0("EllipseAlgoOutputs/",folder,number))){
     print("Error: Folder already exists!")
     break
   }
-  dir.create(paste0("Ellipse2Outputs/",folder,number))
-  file.copy("./outputtemp/", paste0("Ellipse2Outputs/",folder,number), recursive = TRUE)
+  dir.create(paste0("EllipseAlgoOutputs/",folder,number))
+  file.copy("./outputtemp/", paste0("EllipseAlgoOutputs/",folder,number), recursive = TRUE)
 }
 
 runJiaFanEllipses("./Test Pics/Danbooru8-6-20-1235pmEST/test13.jpg")

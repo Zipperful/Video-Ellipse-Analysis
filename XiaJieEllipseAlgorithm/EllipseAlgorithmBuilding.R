@@ -5,6 +5,7 @@
 # Alter line-spreading logic to break at T junctions rather than follow one
 # Line prune more aggressive, thresh length more aggressively?
 # Prune Right Angles out in line pruning step by rejecting those with areas too close to maximum, by 90%
+#Fix midpoint formula for very diff sizes like the first two quadrants have it
 
 ##TWO vs 3 Parameter fitting approach
 #  For two:  Find centers via leave-one-out approach on midpoints and find mean to find center, calc best N and p from slopes
@@ -31,8 +32,8 @@ library(VideoTrackingUtilities)
 # paramLineArea=2
 
 
-pathImageToLoad <- "./Test Pics/Danbooru8-6-20-1235pmEST/test13.jpg"
-paramLineArea = 4
+pathImageToLoad <- "./Test Pics/bike.jpg"
+paramLineArea = 2
 # runJiaFanEllipses <- function(pathImageToLoad, 
 #                               pathFolderToMake = "outputtemp", 
 #                               paramScale=2, 
@@ -46,8 +47,9 @@ paramScale=2
 paramAlpha=0.2
 paramSigma=1
 paramLengthCutoff=16
+paramMidpoints=16
 # paramLineArea=2
-paramCNC = 0.2
+paramCNC = 0.3
 
   
   #Initializing Paths and Making Directories
@@ -368,8 +370,17 @@ paramCNC = 0.2
       CNC12[x,] <- c(CNC, m, n)
     }
   }
-  #Removing Empty Rows of CNC Matrix
+  #Removing Empty Rows of CNC Matrix and Saving List of contour pair indexes, contour pairs, and extrema of pairs
   CNC12 <- CNC12[ CNC12[,2] !=0 ,]
+  pairs12 <- vector(mode = "list", length=nrow(CNC12))
+  pts12 <- vector(mode = "list", length=nrow(CNC12))
+  conts12 <- vector(mode = "list", length=nrow(CNC12))
+  for(x in 1:nrow(CNC12)) {
+    pairs12[[x]] <- CNC12[x,2:3]
+    pts12[[x]] <- list(pts1[[CNC12[x,2]]], pts2[[CNC12[x,3]]])
+    conts12[[x]] <- list(conts1[[CNC12[x,2]]], conts2[[CNC12[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -399,6 +410,15 @@ paramCNC = 0.2
     }
   }
   CNC14 <- CNC14[ CNC14[,2] !=0 ,]
+  pairs14 <- vector(mode = "list", length=nrow(CNC14))
+  pts14 <- vector(mode = "list", length=nrow(CNC14))
+  conts14 <- vector(mode = "list", length=nrow(CNC14))
+  for(x in 1:nrow(CNC14)) {
+    pairs14[[x]] <- CNC14[x,2:3]
+    pts14[[x]] <- list(pts1[[CNC14[x,2]]], pts4[[CNC14[x,3]]])
+    conts14[[x]] <- list(conts1[[CNC14[x,2]]], conts4[[CNC14[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -428,6 +448,15 @@ paramCNC = 0.2
     }
   }
   CNC32 <- CNC32[ CNC32[,2] !=0 ,]
+  pairs32 <- vector(mode = "list", length=nrow(CNC32))
+  pts32 <- vector(mode = "list", length=nrow(CNC32))
+  conts32 <- vector(mode = "list", length=nrow(CNC32))
+  for(x in 1:nrow(CNC32)) {
+    pairs32[[x]] <- CNC32[x,2:3]
+    pts32[[x]] <- list(pts3[[CNC32[x,2]]], pts2[[CNC32[x,3]]])
+    conts32[[x]] <- list(conts3[[CNC32[x,2]]], conts2[[CNC32[x,3]]])
+  }
+  
   
   #Finding CNC Values for each pair in quadrants 1 and 4, and thresholding with paramCNC
   #Explanation of each part of loop can be found in CNC12 example above
@@ -456,6 +485,14 @@ paramCNC = 0.2
     }
   }
   CNC34 <- CNC34[ CNC34[,2] !=0 ,]
+  pairs34 <- vector(mode = "list", length=nrow(CNC34))
+  pts34 <- vector(mode = "list", length=nrow(CNC34))
+  conts34 <- vector(mode = "list", length=nrow(CNC34))
+  for(x in 1:nrow(CNC34)) {
+    pairs34[[x]] <- CNC34[x,2:3]
+    pts34[[x]] <- list(pts3[[CNC34[x,2]]], pts4[[CNC34[x,3]]])
+    conts34[[x]] <- list(conts3[[CNC34[x,2]]], conts4[[CNC34[x,3]]])
+  }
   
   Rprof(NULL)
   
@@ -472,12 +509,271 @@ paramCNC = 0.2
   #Estimating Ellipse Centers for Each Valid Contour Pair
   #{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
   #-----------------------------------------------------------------------------------------------------------------------------
+  midCount <- paramMidpoints
   #PCalculating Centers of Each Probable Ellipse Pair
   print(Sys.time() - start)
   print("Calculating Centers of Possible Ellipses Passing CNC Threshold Check... (CenterCalculation.prof)...")
   Rprof("CenterCalculation.prof")
   
+  #Finding Chords for Pairs in 12 to calculate 
+  # For 12, need bottom of 2 to mid of 1, bottom of 1 to mid of 2
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
   
+  ptsToLine2 <- function(pt1, pt2){
+    y1s <- matrix(c(pt1[2], pt2[2], 1, 1), nrow=2)
+    x1s <- matrix(c(pt1[1], pt2[1], 1, 1), nrow=2)
+    xys <- matrix(c(pt1[1], pt2[1], pt1[2], pt2[2]), nrow=2)
+    return(c(det(y1s), -det(x1s), -det(xys)))
+  }
+  
+  findMidpoint <- function(pt1, pt2){
+    x <- mean( c(pt1[1], pt2[1]) )
+    y <- mean( c(pt1[2], pt2[2]) )
+    return(c( x,y ) )
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------------------
+  
+  slopes12 <- slopes21 <- midpoints12 <- midpoints21 <- vector(mode = "list", length=length(pairs12))
+  slopes14 <- slopes41 <- midpoints14 <- midpoints41 <- vector(mode = "list", length=length(pairs14))
+  slopes32 <- slopes23 <- midpoints32 <- midpoints23 <- vector(mode = "list", length=length(pairs32))
+  slopes34 <- slopes43 <- midpoints34 <- midpoints43 <- vector(mode = "list", length=length(pairs34))
+
+  #-----------------------------------------------------------------------------------------------------------------------------
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  plot(pxEdges)
+  for(x in 1:length(pairs12)){
+  # for(x in 2:2){
+    pt1bot <- pts12[[x]][[1]][1,]
+    pt1mid <- pts12[[x]][[1]][2,]
+    pt1top <- pts12[[x]][[1]][3,]
+    pt2bot <- pts12[[x]][[2]][3,]
+    pt2mid <- pts12[[x]][[2]][2,]
+    pt2top <- pts12[[x]][[2]][1,]
+    slope12 <- (pt1bot[2]-pt2mid[2])/(pt1bot[1]-pt2mid[1])
+    slope21 <- (pt2bot[2]-pt1mid[2])/(pt2bot[1]-pt1mid[1])
+    
+    int12bot <- pt1bot[2]-slope12*pt1bot[1]
+    int12top <- pt2top[2]-slope12*pt2top[1]
+    int21bot <- pt2bot[2]-slope21*pt2bot[1]
+    int21top <- pt1top[2]-slope21*pt1top[1]
+    
+    ints12 <- seq(from=int12bot, to=int12top, length.out=midCount)
+    ints21 <- seq(from=int21bot, to=int21top, length.out=midCount)
+    
+    mids12 <- matrix(0, ncol=2, nrow=midCount)
+    mids21 <- matrix(0, ncol=2, nrow=midCount)
+    
+    for(y in 1:midCount){
+      difs12a <- abs(conts12[[x]][[1]][,2] - (conts12[[x]][[1]][,1] * slope12 + ints12[y]))
+      difs12b <- abs(conts12[[x]][[2]][,2] - (conts12[[x]][[2]][,1] * slope12 + ints12[y]))
+
+      mids12[y,] <- findMidpoint( conts12[[x]][[1]][ which.min(difs12a) ,] , conts12[[x]][[2]][ which.min(difs12b) ,])
+      
+      difs21a <- abs(conts12[[x]][[1]][,2] - (conts12[[x]][[1]][,1] * slope21 + ints21[y]))
+      difs21b <- abs(conts12[[x]][[2]][,2] - (conts12[[x]][[2]][,1] * slope21 + ints21[y]))
+
+      mids21[y,] <- findMidpoint( conts12[[x]][[1]][ which.min(difs21a) ,] , conts12[[x]][[2]][ which.min(difs21b) ,])
+    }
+    
+    mids12 <- unique(mids12)
+    mids12 <- mids12[ mids12[,2] >= min(conts12[[x]][[1]][,2]), ]
+    mids21 <- unique(mids21)
+    mids21 <- mids21[ mids21[,2] >= min(conts12[[x]][[2]][,2]), ]
+    
+    slopes12[[x]] <- slope12
+    slopes21[[x]] <- slope21
+    midpoints12[[x]] <- mids12
+    midpoints21[[x]] <- mids21
+
+    lines(conts12[[x]][[1]][,1], y=conts12[[x]][[1]][,2], col="magenta")
+    lines(conts12[[x]][[2]][,1], y=conts12[[x]][[2]][,2], col="red")
+    abline(int12bot, slope12, col="cyan")
+    abline(int12top, slope12, col="cyan")
+    abline(int21top, slope21, col="yellow")
+    abline(int21bot, slope21, col="yellow")
+    points(x=mids12[,1], y=mids12[,2], col="green")
+    points(x=mids21[,1], y=mids21[,2], col="turquoise")
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------------------
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  plot(pxEdges)
+  for(x in 1:length(pairs14)){
+    pt1lef <- pts14[[x]][[1]][3,]
+    pt1mid <- pts14[[x]][[1]][2,]
+    pt1rig <- pts14[[x]][[1]][1,]
+    pt4lef <- pts14[[x]][[2]][1,]
+    pt4mid <- pts14[[x]][[2]][2,]
+    pt4rig <- pts14[[x]][[2]][3,]
+    slope14 <- (pt1lef[2]-pt4mid[2])/(pt1lef[1]-pt4mid[1])
+    slope41 <- (pt4lef[2]-pt1mid[2])/(pt4lef[1]-pt1mid[1])
+    
+    int14lef <- pt1lef[2]-slope14*pt1lef[1]
+    int14rig <- pt4rig[2]-slope14*pt4rig[1]
+    int41lef <- pt4lef[2]-slope41*pt4lef[1]
+    int41rig <- pt1rig[2]-slope41*pt1rig[1]
+    
+    ints14 <- seq(from=int14lef, to=int14rig, length.out=midCount)
+    ints41 <- seq(from=int41lef, to=int41rig, length.out=midCount)
+    
+    mids14 <- matrix(0, ncol=2, nrow=midCount)
+    mids41 <- matrix(0, ncol=2, nrow=midCount)
+    
+    for(y in 1:midCount){
+      difs14a <- abs(conts14[[x]][[1]][,2] - (conts14[[x]][[1]][,1] * slope14 + ints14[y]))
+      difs14b <- abs(conts14[[x]][[2]][,2] - (conts14[[x]][[2]][,1] * slope14 + ints14[y]))
+
+      mids14[y,] <- findMidpoint( conts14[[x]][[1]][ which.min(difs14a) ,] , conts14[[x]][[2]][ which.min(difs14b) ,])
+      
+      difs41a <- abs(conts14[[x]][[1]][,2] - (conts14[[x]][[1]][,1] * slope41 + ints41[y]))
+      difs41b <- abs(conts14[[x]][[2]][,2] - (conts14[[x]][[2]][,1] * slope41 + ints41[y]))
+
+      mids41[y,] <- findMidpoint( conts14[[x]][[1]][ which.min(difs41a) ,] , conts14[[x]][[2]][ which.min(difs41b) ,])
+    }
+
+    mids14 <- unique(mids14)
+    mids14 <- mids14[ mids14[,1] <= max(conts14[[x]][[1]][,1]), ]
+    mids41 <- unique(mids41)
+    mids21 <- mids21[ mids21[,1] <= max(conts14[[x]][[2]][,1]), ]
+    
+    slopes14[[x]] <- slope14
+    slopes41[[x]] <- slope41
+    midpoints14[[x]] <- mids14
+    midpoints41[[x]] <- mids41
+    
+    lines(conts14[[x]][[1]][,1], y=conts14[[x]][[1]][,2], col="magenta")
+    lines(conts14[[x]][[2]][,1], y=conts14[[x]][[2]][,2], col="red")
+    # abline(int14lef, slope14, col="cyan")
+    # abline(int14rig, slope14, col="cyan")
+    # abline(int41lef, slope41, col="yellow")
+    # abline(int41rig, slope41, col="yellow")
+    points(x=mids14[,1], y=mids14[,2], col="green")
+    points(x=mids41[,1], y=mids41[,2], col="turquoise")
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------------------
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  plot(pxEdges)
+  for(x in 1:length(pairs32)){
+    print(x)
+    pt3lef <- pts32[[x]][[1]][1,]
+    pt3mid <- pts32[[x]][[1]][2,]
+    pt3rig <- pts32[[x]][[1]][3,]
+    pt2lef <- pts32[[x]][[2]][3,]
+    pt2mid <- pts32[[x]][[2]][2,]
+    pt2rig <- pts32[[x]][[2]][1,]
+    slope32 <- (pt3rig[2]-pt2mid[2])/(pt3rig[1]-pt2mid[1])
+    slope23 <- (pt2rig[2]-pt3mid[2])/(pt2rig[1]-pt3mid[1])
+    
+    int32rig <- pt3rig[2]-slope32*pt3rig[1]
+    int32lef <- pt2lef[2]-slope32*pt2lef[1]
+    int23rig <- pt2rig[2]-slope23*pt2rig[1]
+    int23lef <- pt3lef[2]-slope23*pt3lef[1]
+    
+    ints32 <- seq(from=int32rig, to=int32lef, length.out=midCount)
+    ints23 <- seq(from=int23rig, to=int23lef, length.out=midCount)
+    mids32 <- matrix(0, ncol=2, nrow=midCount)
+    mids23 <- matrix(0, ncol=2, nrow=midCount)
+    
+    for(y in 1:midCount){
+      difs32a <- abs(conts32[[x]][[1]][,2] - (conts32[[x]][[1]][,1] * slope32 + ints32[y]))
+      difs32b <- abs(conts32[[x]][[2]][,2] - (conts32[[x]][[2]][,1] * slope32 + ints32[y]))
+      
+      mids32[y,] <- findMidpoint( conts32[[x]][[1]][ which.min(difs32a) ,] , conts32[[x]][[2]][ which.min(difs32b) ,])
+
+      difs23a <- abs(conts32[[x]][[1]][,2] - (conts32[[x]][[1]][,1] * slope23 + ints23[y]))
+      difs23b <- abs(conts32[[x]][[2]][,2] - (conts32[[x]][[2]][,1] * slope23 + ints23[y]))
+      
+      mids23[y,] <- findMidpoint( conts32[[x]][[1]][ which.min(difs23a) ,] , conts32[[x]][[2]][ which.min(difs23b) ,])
+    }
+    
+    mids32 <- unique(mids32)
+    mids32 <- mids32[ !is.na(mids32[,1]) & !is.na(mids32[,2]), ]
+    mids23 <- unique(mids23)
+    mids23 <- mids23[ !is.na(mids23[,1]) & !is.na(mids23[,2]), ]
+    
+    slopes32[[x]] <- slope32
+    slopes23[[x]] <- slope23
+    midpoints32[[x]] <- mids32
+    midpoints23[[x]] <- mids23
+    
+    lines(conts32[[x]][[1]][,1], y=conts32[[x]][[1]][,2], col="magenta")
+    lines(conts32[[x]][[2]][,1], y=conts32[[x]][[2]][,2], col="red")
+    # abline(int32rig, slope32, col="cyan")
+    # abline(int32lef, slope32, col="cyan")
+    # abline(int23rig, slope23, col="yellow")
+    # abline(int23lef, slope23, col="yellow")
+    points(x=mids32[,1], y=mids32[,2], col="green")
+    points(x=mids23[,1], y=mids23[,2], col="turquoise")
+  }
+  
+  #-----------------------------------------------------------------------------------------------------------------------------
+  #Internal notes follow:
+  #Ordering Points: pts1 CCW: et em es, pts2 CCW: et em es, pts3 CCW: es em et, pts4 CCW: es em et
+  plot(pxEdges)
+  for(x in 1:length(pairs34)){
+    print(x)
+    pt3top <- pts34[[x]][[1]][1,]
+    pt3mid <- pts34[[x]][[1]][2,]
+    pt3bot <- pts34[[x]][[1]][3,]
+    pt4top <- pts34[[x]][[2]][3,]
+    pt4mid <- pts34[[x]][[2]][2,]
+    pt4bot <- pts34[[x]][[2]][1,]
+    slope34 <- (pt3top[2]-pt4mid[2])/(pt3top[1]-pt4mid[1])
+    slope43 <- (pt4top[2]-pt3mid[2])/(pt4top[1]-pt3mid[1])
+    
+    int34top <- pt3top[2]-slope34*pt3top[1]
+    int34bot <- pt4bot[2]-slope34*pt4bot[1]
+    int43top <- pt4top[2]-slope43*pt4top[1]
+    int43bot <- pt3bot[2]-slope43*pt3bot[1]
+    
+    ints34 <- seq(from=int34top, to=int34bot, length.out=midCount)
+    ints43 <- seq(from=int43top, to=int43bot, length.out=midCount)
+    mids34 <- matrix(0, ncol=2, nrow=midCount)
+    mids43 <- matrix(0, ncol=2, nrow=midCount)
+    print(ints34)
+    for(y in 1:midCount){
+      difs34a <- abs(conts34[[x]][[1]][,2] - (conts34[[x]][[1]][,1] * slope34 + ints34[y]))
+      difs34b <- abs(conts34[[x]][[2]][,2] - (conts34[[x]][[2]][,1] * slope34 + ints34[y]))
+      
+      mids34[y,] <- findMidpoint( conts34[[x]][[1]][ which.min(difs34a) ,] , conts34[[x]][[2]][ which.min(difs34b) ,])
+
+      difs43a <- abs(conts34[[x]][[1]][,2] - (conts34[[x]][[1]][,1] * slope43 + ints43[y]))
+      difs43b <- abs(conts34[[x]][[2]][,2] - (conts34[[x]][[2]][,1] * slope43 + ints43[y]))
+      
+      mids43[y,] <- findMidpoint( conts34[[x]][[1]][ which.min(difs43a) ,] , conts34[[x]][[2]][ which.min(difs43b) ,])
+    }
+    # print(mids34)
+    mids34 <- unique(mids34)
+    mids34 <- mids34[ !is.na(mids34[,1]) & !is.na(mids34[,2]), ]
+    mids43 <- unique(mids43)
+    mids43 <- mids43[ !is.na(mids43[,1]) & !is.na(mids43[,2]), ]
+    
+    slopes34[[x]] <- slope34
+    slopes43[[x]] <- slope43
+    midpoints34[[x]] <- mids34
+    midpoints43[[x]] <- mids43
+    
+    lines(conts34[[x]][[1]][,1], y=conts34[[x]][[1]][,2], col="magenta")
+    lines(conts34[[x]][[2]][,1], y=conts34[[x]][[2]][,2], col="red")
+    # abline(int34top, slope34, col="cyan")
+    # abline(int34bot, slope34, col="cyan")
+    # abline(int43top, slope43, col="yellow")
+    # abline(int43bot, slope43, col="yellow")
+    points(x=mids34[,1], y=mids34[,2], col="green")
+    points(x=mids43[,1], y=mids43[,2], col="turquoise")
+  }
+  
+  
+  #Fix midpoint formula for very diff sizes like the first two quadrants have it???
+  #Use theilsen on midpoints to generate extra list of slopes
+  #Deal with infinities in theilsen
+  #use slopes and contours to vote on parameters
   
   
   Rprof(NULL)
@@ -495,8 +791,145 @@ paramCNC = 0.2
   print("Matching Those Contour Pairs That Could Describe an Ellipse... (EllipseParameters.prof)...")
   Rprof("EllipseParameters.prof")
   
+  theilsenSlopes <- function(mdpts){
+    middle <- floor(nrow(mdpts)/2)
+    slopes <- matrix(0, ncol=1, nrow=middle)
+    for(x in 1:middle){
+      x1 <- mdpts[x,1]
+      y1 <- mdpts[x,2]
+      x2 <- mdpts[middle+x,1]
+      y2 <- mdpts[middle+x,2]
+      slope <- (y2-y1)/(x2-x1)
+      slopes[x,1] <- slope
+    }
+    median <- median(slopes)
+    return(list(median, slopes))
+  }
+  
+  centers34 <- matrix(0, nrow=length(pairs34), ncol=2)
+  for(x in 1:length(pairs34)){
+    print("x then midpoints34x")
+    print(x)
+    print(midpoints34[[x]])
+    theilSlopes34 <- theilsenSlopes(midpoints34[[x]])
+    theilSlopes43 <- theilsenSlopes(midpoints43[[x]])
+    medSlope34 <- theilSlopes34[[1]]
+    medSlope43 <- theilSlopes43[[1]]
+    theilSlopes34 <- theilSlopes34[[2]]
+    theilSlopes43 <- theilSlopes43[[2]]
+    centers34[x,] <- findCenterFromMidpoints(midpoints34[[x]], midpoints43[[x]], medSlope34, medSlope43)
+    
+    #Using Centers, theilslopes, and interarc slopes to find parameters
+    q1 <- slopes34[[x]]
+    q3 <- slopes43[[x]]
+    q2 <- theilSlopes34
+    q4 <- theilSlopes43
+    gs34 <- findGVals(q1, q2, q3, q4)
+    bs34 <- findBVals(q1, q2, q3, q4)
+    ks34 <- findKVals(gs34, bs34)
+    ns34 <- findNVals(ks34, q1, q2)
+    ps34 <- findPVals(ks34, ns34)
+    # findGVals
+    # findBVals
+    # findKVals
+    # findNVals
+    # findX0Vals
+    # findY0Vals
+    # findAVals
+    # findBVals
+  }
+  findGVals <- function(slope1, slopes2, slope3, slopes4){
+    G <- slope1*slopes2 - slope3*slopes4
+    return(G)
+  }
+  findBVals <- function(slope1, slopes2, slope3, slopes4){
+    B <- (slope3*slopes4 + 1)*(slope1+slopes2) - (slope1*slopes2+1)*(slope3+slopes4)
+    return( B )
+  }
+  findKVals <- function(G, B){
+    K <- (-B + sqrt(B*B+4*G*G))/(2*G)
+    return( K )
+  }
+  findNVals <- function(K, slope1, slopes2){
+    NPlus <- sqrt(  (slope1-K)*(slopes2-K)/(1+slope1*K)/(1+slopes2*K)  )
+    # if(NPlus <= 1){
+    #   return(NPlus)
+    # } else {
+    #   return(1/NPlus)
+    # }
+    NPlus <- NPlus[ !is.na(NPlus) ]
+    NFlipped <- 1/NPlus[ NPlus <= 1 ]
+    NPlus[ NPlus <=1 ] <- 1/ NPlus[ NPlus <= 1 ]
+  }
+  findPVals <- function(K, N){
+    if(N<=1){
+      return(atan(K))
+    } else {
+      return(atan(K)+pi/2)
+    }
+  }
+  
+  accumulateNP <- function(N, P, center, arc1, arc2){
+    
+  }
   
   
+  accumulateA1 <- function(N, K, center, arc1, arc2){
+    
+  }
+  
+  findA2Val <- function(A1, N){
+    return(A1*N)
+  }
+  
+  findCenterFromMidpoints <- function(ctPairMidpts1, ctPairMidpts2, theilSlope1, theilSlope2){
+    med1x <- median(ctPairMidpts1[,1])
+    med1y <- median(ctPairMidpts1[,2])
+    med2x <- median(ctPairMidpts2[,1])
+    med2y <- median(ctPairMidpts2[,2])
+    slope1 <- theilSlope1
+    slope2 <- theilSlope2
+    
+    b1 <- med1y - slope1 * med1x
+    b2 <- med2y - slope2 * med2y
+    
+    centerx <- (b1-b2)/(slope2-slope1)
+    centery <- (b2*slope1 - b1*slope2) / (slope1-slope2)
+    
+    return(c(centerx, centery))
+  }
+  
+  centers34 <- matrix(0, ncol=2, nrow=length(pairs34))
+  #needs midpoints34, theil34
+  theilSlopes34 <-  vector(mode = "list", length=length(pairs34))
+  theilSlopes43 <-  vector(mode = "list", length=length(pairs34))
+  
+  for(x in 1:length(pairs34)){
+    medmids34x <- median(midpoints34[[x]][,1])
+    medmids34y <- median(midpoints34[[x]][,2])
+    medmids43x <- median(midpoints43[[x]][,1])
+    medmids43y <- median(midpoints43[[x]][,2])
+    
+    theil34 <- theilsenSlopes(midpoints34[[x]])
+    theil43 <- theilsenSlopes(midpoints43[[x]])
+    # print(theil34)
+    # print(theil43)
+    slope34 <- theil34[[1]]
+    slope43 <- theil43[[1]]
+    theilSlopes34[[x]] <- theil34[[2]]
+    theilSlopes43[[x]] <- theil43[[2]]
+    b34 <- medmids34y - slope34*medmids34x
+    b43 <- medmids43y - slope43*medmids43x
+
+    abline(b34, slope34, col="yellow")
+    abline(b43, slope43, col="yellow")
+    center34x <- (b34-b43)/(slope43-slope34)
+    center34y <- (b43*slope34-b34*slope43)/(slope34-slope43)
+    centers34[x,] <- c(center34x, center34y)
+  }
+  centers34 <- centers34[ !is.nan(centers34[,1]) & !is.nan(centers34[,2]), ]
+  points(centers34[,1], y=centers34[,2], cex=2, col="yellow")
+
   
   Rprof(NULL)
   #Garbage Collecting
@@ -580,12 +1013,12 @@ paramCNC = 0.2
 # }
 
 saveCurrentOutputFolder <- function(folder,number){
-  if(file.exists(paste0("Ellipse2Outputs/",folder,number))){
+  if(file.exists(paste0("EllipseAlgoOutputs/",folder,number))){
     print("Error: Folder already exists!")
     break
   }
-  dir.create(paste0("Ellipse2Outputs/",folder,number))
-  file.copy("./outputtemp/", paste0("Ellipse2Outputs/",folder,number), recursive = TRUE)
+  dir.create(paste0("EllipseAlgoOutputs/",folder,number))
+  file.copy("./outputtemp/", paste0("EllipseAlgoOutputs/",folder,number), recursive = TRUE)
 }
 
 # runJiaFanEllipses("./Test Pics/Danbooru8-6-20-1235pmEST/test2.jpg", paramLineArea = 0.5)
