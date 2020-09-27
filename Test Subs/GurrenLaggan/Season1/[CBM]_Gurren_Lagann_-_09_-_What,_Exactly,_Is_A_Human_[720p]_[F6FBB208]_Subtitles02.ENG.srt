@@ -1,0 +1,1389 @@
+1
+00:00:10,670 --> 00:00:15,510
+Gurren Lagann
+
+2
+00:00:15,580 --> 00:00:18,110
+<font color=#FFFF00>Kimi ha kikoeru?
+</font>Can you hear it?
+
+3
+00:00:18,250 --> 00:00:26,250
+<font color=#FFFF00>Boku no kono koe ga yami ni munashiku suikomareta
+</font>This voice of mine was sucked emptily into darkness
+
+4
+00:00:26,600 --> 00:00:31,700
+<font color=#FFFF00>Moshimo sekai ga imi wo motsu no nara
+</font>If the world has meaning to it,
+
+5
+00:00:32,030 --> 00:00:36,570
+<font color=#FFFF00>Konna kimochi mo muda de ha nai
+</font>Then these kinds of feelings aren't futile
+
+6
+00:00:36,910 --> 00:00:42,610
+<font color=#FFFF00>Akogare ni oshitsubusarete akirametetanda
+</font>I was crushed by my longing and had given up
+
+7
+00:00:42,910 --> 00:00:47,870
+<font color=#FFFF00>Hateshinai sora no iro mo shiranaide
+</font>Without even knowing the color of the endless sky
+
+8
+00:00:48,280 --> 00:00:53,190
+<font color=#FFFF00>Hashiridashita omoi ga ima demo
+</font>I began to run, because my feelings, even now,
+
+9
+00:00:53,520 --> 00:00:58,960
+<font color=#FFFF00>Kono mune wo tashika ni tataiteru kara
+</font>Are definitely beating against my heart
+
+10
+00:00:59,230 --> 00:01:04,030
+<font color=#FFFF00>Kyou no boku ga sono saki ni tsudzuku
+</font>The me of today will continue towards our destination
+
+11
+00:01:04,500 --> 00:01:10,060
+<font color=#FFFF00>Bokura nari no asu wo kizuite yuku
+</font>We'll amass our own tomorrows
+
+12
+00:01:10,410 --> 00:01:18,900
+<font color=#FFFF00>Kotae ha sou itsumo koko ni aru
+</font>The answer, yes, is always right here
+
+13
+00:01:31,290 --> 00:01:35,670
+This is the tale of a man who continues
+to fight against fate.
+
+14
+00:01:36,550 --> 00:01:41,390
+This man lived a life of desire,
+loyalty, and extravagance,
+
+15
+00:01:41,850 --> 00:01:44,930
+...he loved his companions,
+and he strove for freedom.
+
+16
+00:01:45,060 --> 00:01:48,020
+And then, abruptly, he died.
+
+17
+00:01:49,230 --> 00:01:51,520
+But even so, Simon lives on.
+
+18
+00:01:52,230 --> 00:01:54,270
+He must go on living.
+
+19
+00:01:59,700 --> 00:02:03,700
+<b>Teppelin, Royal Capital
+Audience Chamber</b>
+
+20
+00:02:03,910 --> 00:02:07,750
+<b>Spiral King Lordgenome</b>
+
+21
+00:02:05,290 --> 00:02:07,750
+Thymilph has died, has he?
+
+22
+00:02:07,830 --> 00:02:11,210
+Yes, Majesty. Reports also say
+that Dai-Gunzan was stolen.
+
+23
+00:02:11,420 --> 00:02:14,710
+<b>Cytomander, the Swift</b>
+
+24
+00:02:11,420 --> 00:02:14,710
+One of the Four Generals, killed...
+He must have gotten careless.
+
+25
+00:02:14,920 --> 00:02:25,180
+<b>Guame, the Immovable</b>
+
+26
+00:02:14,920 --> 00:02:17,880
+Let us not forget the saying
+that even an armadillo...
+
+27
+00:02:17,880 --> 00:02:20,130
+...will turn and fight when cornered.
+
+28
+00:02:21,260 --> 00:02:25,180
+In other words, one must never
+underestimate one's opponent.
+
+29
+00:02:25,390 --> 00:02:31,150
+<b>Adiane, the Elegant</b>
+
+30
+00:02:25,390 --> 00:02:26,600
+What nonsense.
+
+31
+00:02:26,600 --> 00:02:31,150
+If a lowly armadillo did turn and fight,
+all one need do is crush it.
+
+32
+00:02:31,400 --> 00:02:35,150
+You don't understand the finer
+subtleties of this world, I see.
+
+33
+00:02:35,280 --> 00:02:38,320
+You forget that we are in the
+presence of the Spiral King.
+
+34
+00:02:38,440 --> 00:02:39,240
+Spiral King.
+
+35
+00:02:39,320 --> 00:02:43,160
+I ask that the honor of retaking Dai-Gunzan
+be given to me, Cytomander, the Swift.
+
+36
+00:02:43,240 --> 00:02:46,410
+No, that mission
+must surely go to me.
+
+37
+00:02:46,580 --> 00:02:49,040
+Thymilph was a dear friend to me.
+
+38
+00:02:49,120 --> 00:02:53,330
+Grant me the opportunity to
+avenge his death, Spiral King.
+
+39
+00:02:54,590 --> 00:02:56,340
+A dear friend, eh?
+
+40
+00:02:56,460 --> 00:03:00,800
+Indeed. There is such a thing as
+friendship that knows no gender.
+
+41
+00:03:01,010 --> 00:03:04,720
+In other words, he was useful
+to your ends.
+
+42
+00:03:04,760 --> 00:03:06,260
+Hold your tongue, anteater.
+
+43
+00:03:06,930 --> 00:03:09,470
+I created you,
+yet you suggest...
+
+44
+00:03:09,560 --> 00:03:12,980
+...that you know a friendship
+that I am unaware of?
+
+45
+00:03:13,520 --> 00:03:16,320
+As you wish.
+Go, Adiane.
+
+46
+00:03:16,650 --> 00:03:18,150
+Thank you, Sire.
+
+47
+00:03:18,320 --> 00:03:21,450
+Adiane, the Elegant, shall give
+these humans a lesson...
+
+48
+00:03:21,530 --> 00:03:24,410
+...in the power and terror
+of the Spiral King.
+
+49
+00:03:27,910 --> 00:03:30,540
+You do not approve, Cytomander?
+
+50
+00:03:31,160 --> 00:03:34,250
+Spiral King, you are the immortal
+creator of this world,
+
+51
+00:03:34,380 --> 00:03:36,630
+...and the monarch who rules
+over all within it.
+
+52
+00:03:36,790 --> 00:03:40,340
+I haven't the slightest intention
+of defying your decisions.
+
+53
+00:03:40,510 --> 00:03:41,880
+In that case, leave me.
+
+54
+00:03:42,010 --> 00:03:43,010
+Yes, Sire.
+
+55
+00:03:44,180 --> 00:03:45,180
+Sire.
+
+56
+00:03:50,810 --> 00:03:56,020
+They seek out the light, even
+though only death awaits them.
+
+57
+00:03:56,690 --> 00:03:58,820
+It is enough to
+make me despair...
+
+58
+00:03:59,780 --> 00:04:03,570
+...at the nature of these
+creatures called humans.
+
+59
+00:04:12,960 --> 00:04:14,830
+Okay, let's end this!
+
+60
+00:04:14,870 --> 00:04:16,670
+- Back off.
+- What?
+
+61
+00:04:16,830 --> 00:04:17,920
+I'll do it.
+
+62
+00:04:44,450 --> 00:04:50,200
+<font color=#000000>Episode 9:
+What, Exactly, Is A Human?</font>
+
+63
+00:05:01,800 --> 00:05:03,920
+Boy, it's really pouring...
+
+64
+00:05:05,130 --> 00:05:06,590
+It's been seven days now.
+
+65
+00:05:12,640 --> 00:05:14,470
+I still can't believe it.
+
+66
+00:05:17,400 --> 00:05:18,480
+Yeah...
+
+67
+00:05:23,530 --> 00:05:24,320
+What's wrong?
+
+68
+00:05:24,440 --> 00:05:28,160
+There's not enough engine output.
+It refuses to stabilize.
+
+69
+00:05:34,750 --> 00:05:36,660
+That hurt!
+
+70
+00:05:39,210 --> 00:05:40,380
+Are you all right?
+
+71
+00:05:40,460 --> 00:05:43,090
+I'm fine, I'm fine.
+That was a good hit, Rossiu.
+
+72
+00:05:43,170 --> 00:05:46,510
+I'm really sorry! I can't seem to get
+the hang of power distribution.
+
+73
+00:05:46,590 --> 00:05:48,340
+That was impressive, Rossiu!
+
+74
+00:05:48,430 --> 00:05:50,970
+Dayakka? Leeron?
+
+75
+00:05:51,140 --> 00:05:53,010
+Are you going to the
+engine room again?
+
+76
+00:05:53,140 --> 00:05:57,270
+Dai-Gurren here is a
+temperamental fellow.
+
+77
+00:05:57,890 --> 00:05:59,900
+Dai-Gurren, huh?
+
+78
+00:06:00,400 --> 00:06:03,570
+Yoko insisted that we
+give it that name.
+
+79
+00:06:03,650 --> 00:06:04,690
+I see.
+
+80
+00:06:04,860 --> 00:06:08,950
+It has a repair factory, and its living
+quarters are fully equipped.
+
+81
+00:06:09,280 --> 00:06:12,450
+Now, if only we could get the
+main engine stabilized...
+
+82
+00:06:12,740 --> 00:06:16,410
+Even Gurren is as good as new
+after that pounding it took.
+
+83
+00:06:16,580 --> 00:06:18,790
+It's one hell of a facility,
+that's for sure.
+
+84
+00:06:18,920 --> 00:06:21,380
+Simon, get your act together!
+
+85
+00:06:22,380 --> 00:06:25,960
+The only thing it can't mend
+is a broken human heart.
+
+86
+00:06:26,260 --> 00:06:30,680
+You're not the only one aboard, you know!
+Gurren Lagann is all about teamwork!
+
+87
+00:06:30,760 --> 00:06:33,510
+Nobody asked you to pilot it.
+
+88
+00:06:33,600 --> 00:06:36,970
+Say what? So, you're saying that you
+can pilot it all by yourself?
+
+89
+00:06:38,020 --> 00:06:39,680
+I'll do it by myself.
+
+90
+00:06:39,770 --> 00:06:41,900
+That's a good idea.
+Actually, that's for the best.
+
+91
+00:06:42,060 --> 00:06:44,560
+Don't get too full
+of yourself, kid!
+
+92
+00:06:44,610 --> 00:06:48,820
+If you'd have held it together,
+Kamina wouldn't be dead now!
+
+93
+00:06:48,900 --> 00:06:50,360
+Big brother!
+
+94
+00:06:54,240 --> 00:06:55,830
+I'm sorry, Simon.
+
+95
+00:06:57,040 --> 00:06:59,500
+It's okay.
+What Kittan said is true.
+
+96
+00:06:59,710 --> 00:07:01,210
+I killed Kamina.
+
+97
+00:07:01,710 --> 00:07:05,590
+So I'll get tougher.
+I HAVE to get tough.
+
+98
+00:07:06,130 --> 00:07:08,880
+I'll fight hard enough
+for both me AND Kamina.
+
+99
+00:07:12,260 --> 00:07:16,050
+Rossiu, why didn't that god of yours
+save Kamina?
+
+100
+00:07:16,180 --> 00:07:20,310
+That's right, I forgot. The god
+you pray to is a Gunmen.
+
+101
+00:07:20,600 --> 00:07:25,560
+No wonder he died. After all,
+it was a god that killed him!
+
+102
+00:07:25,650 --> 00:07:27,150
+Simon.
+
+103
+00:07:31,070 --> 00:07:33,610
+I'm sorry.
+That was uncalled for.
+
+104
+00:07:46,040 --> 00:07:49,130
+Sorry, Boota.
+I'm exhausted.
+
+105
+00:07:52,220 --> 00:07:53,430
+Bro...
+
+106
+00:08:00,640 --> 00:08:03,270
+It's gotta be Kittan or nobody.
+
+107
+00:08:03,940 --> 00:08:08,110
+Yeah, he's the one who called us
+all together in the first place.
+
+108
+00:08:08,190 --> 00:08:11,610
+Simon's just too unreliable.
+He's too damn mopey.
+
+109
+00:08:11,690 --> 00:08:14,280
+Just because he can pilot Lagann
+doesn't mean he should be leader.
+
+110
+00:08:14,410 --> 00:08:19,580
+If an obnoxious kid like him is made
+leader, Team Gurren is history.
+
+111
+00:08:20,450 --> 00:08:21,950
+DAI-Gurren.
+
+112
+00:08:22,410 --> 00:08:25,420
+It's not Team Gurren.
+It's Team DAI-Gurren now!
+
+113
+00:08:29,840 --> 00:08:31,130
+Don't eat yourself sick.
+
+114
+00:08:31,260 --> 00:08:35,590
+I need to keep up my energy. I can't
+even use a rifle properly, remember?
+
+115
+00:08:36,260 --> 00:08:40,680
+The Four Generals, the Spiral King,
+we've still got lots of enemies out there.
+
+116
+00:08:41,180 --> 00:08:42,930
+The war goes on.
+
+117
+00:08:43,060 --> 00:08:45,190
+Yeah, you have a point.
+
+118
+00:08:48,150 --> 00:08:49,980
+So does this rain...
+
+119
+00:08:50,610 --> 00:08:55,400
+Even with the rain, I can have a hot meal
+right after target practice now.
+
+120
+00:08:56,030 --> 00:08:58,820
+Seven days ago, I never
+would have imagined it.
+
+121
+00:08:59,910 --> 00:09:01,740
+And it's all thanks to him.
+
+122
+00:09:03,790 --> 00:09:06,330
+Look, about Simon...
+
+123
+00:09:06,790 --> 00:09:09,210
+He seems like he's
+getting worn down.
+
+124
+00:09:09,670 --> 00:09:10,710
+Oh.
+
+125
+00:09:10,840 --> 00:09:12,590
+Aren't you worried
+about him?
+
+126
+00:09:15,090 --> 00:09:19,760
+Keda. Kaia.
+Mycee. Nashika.
+
+127
+00:09:19,890 --> 00:09:23,310
+We sure lost a lot of people
+defending Littner, didn't we?
+
+128
+00:09:23,430 --> 00:09:24,470
+Yeah.
+
+129
+00:09:24,600 --> 00:09:26,810
+Sacrifices are necessary
+for survival.
+
+130
+00:09:26,940 --> 00:09:29,810
+And we survivors work even harder
+to make sure they weren't in vain.
+
+131
+00:09:30,480 --> 00:09:33,070
+I've always accepted that
+as part of what we do.
+
+132
+00:09:33,150 --> 00:09:36,400
+But this time,
+I don't think I can.
+
+133
+00:09:38,990 --> 00:09:42,740
+I'm sorry, it's all I can do
+to keep myself together.
+
+134
+00:09:51,250 --> 00:09:53,590
+You said you'd repay that kiss
+ten times over.
+
+135
+00:09:53,670 --> 00:09:58,010
+What's the big idea, leaving a hole
+in my heart that's ten times bigger?
+
+136
+00:09:58,300 --> 00:09:59,970
+Kamina, you jerk...
+
+137
+00:10:06,390 --> 00:10:09,730
+Gunmen detected! They're closing in
+from off the starboard bow!
+
+138
+00:10:09,900 --> 00:10:11,690
+I despise persistent types...
+
+139
+00:10:11,900 --> 00:10:12,900
+Leeron!
+
+140
+00:10:13,150 --> 00:10:17,150
+I'll combine Lagann with Gurren and
+head out. I'll be fine on my own.
+
+141
+00:10:17,360 --> 00:10:18,990
+I'll pilot Gurren.
+
+142
+00:10:19,240 --> 00:10:20,110
+Rossiu?
+
+143
+00:10:20,240 --> 00:10:24,080
+I mean, you can't do it by yourself, right?
+Go on, combine.
+
+144
+00:10:25,120 --> 00:10:26,490
+Yeah, all right...
+
+145
+00:10:37,920 --> 00:10:40,050
+Simon!
+This is overkill!
+
+146
+00:10:40,380 --> 00:10:43,050
+He who strikes first wins!
+It's what Kamina would have done!
+
+147
+00:10:48,310 --> 00:10:49,930
+Power output is unstable!
+
+148
+00:10:55,360 --> 00:10:58,230
+Bastard! Bastard! Bastard!
+Bastard! Bastard! Bast--
+
+149
+00:11:02,620 --> 00:11:06,620
+Keep it together!
+Kamina never screamed, not once!
+
+150
+00:11:08,540 --> 00:11:10,210
+Simon, you have to calm down!
+
+151
+00:11:10,540 --> 00:11:13,960
+If you keep fighting like this,
+YOU will die this time!
+
+152
+00:11:14,170 --> 00:11:15,920
+Kamina wouldn't run away!
+
+153
+00:11:16,000 --> 00:11:19,460
+Not Kamina! Not ever!
+
+154
+00:11:47,080 --> 00:11:48,950
+What's wrong, Simon?
+
+155
+00:11:54,960 --> 00:11:57,380
+The energy is feeding back?
+
+156
+00:11:59,300 --> 00:12:00,800
+T-The drill!
+
+157
+00:12:08,390 --> 00:12:11,470
+Come back here, damn you!
+
+158
+00:12:14,730 --> 00:12:16,400
+Rossiu!
+Are you all right?
+
+159
+00:12:16,520 --> 00:12:17,900
+What happened, Rossiu?
+
+160
+00:12:17,980 --> 00:12:20,650
+Lagann suddenly separated,
+and then it--
+
+161
+00:12:20,740 --> 00:12:21,740
+It fell down this?
+
+162
+00:12:21,820 --> 00:12:24,650
+He abandoned you and ran
+in the face of the enemy?
+
+163
+00:12:24,740 --> 00:12:27,240
+It seemed like Lagann
+had gone berserk.
+
+164
+00:12:27,830 --> 00:12:30,240
+Gone berserk?
+Seriously?
+
+165
+00:12:30,330 --> 00:12:31,540
+I think.
+
+166
+00:12:31,950 --> 00:12:33,410
+Simon...
+
+167
+00:12:38,500 --> 00:12:42,010
+<font color=#FFC9B9>Gurren Lagann</font>
+
+168
+00:12:43,510 --> 00:12:47,010
+<font color=#FFC9B9>Gurren Lagann</font>
+
+169
+00:13:00,900 --> 00:13:03,530
+Why did the controls
+stop responding?
+
+170
+00:13:05,650 --> 00:13:07,110
+It started!
+
+171
+00:14:56,270 --> 00:14:57,560
+Hail fellow well met!
+
+172
+00:14:57,600 --> 00:15:00,020
+H-Hail fellow...?
+
+173
+00:15:00,440 --> 00:15:02,400
+Who are you, good sir?
+
+174
+00:15:02,690 --> 00:15:06,150
+"Good sir"? Um, I'm nobody important
+enough to be called that.
+
+175
+00:15:06,570 --> 00:15:09,240
+Oh! This is the outside,
+isn't it?
+
+176
+00:15:09,650 --> 00:15:11,200
+This is rain!
+
+177
+00:15:17,620 --> 00:15:19,870
+It is cold.
+What is this?
+
+178
+00:15:20,210 --> 00:15:24,000
+Um, that's dirt.
+Are you okay without any shoes?
+
+179
+00:15:24,460 --> 00:15:29,760
+It's cold and wet and squishy...
+It feels wonderful!
+
+180
+00:15:29,920 --> 00:15:31,630
+Really? It does?
+
+181
+00:15:35,970 --> 00:15:38,850
+Why are you the same as I am?
+
+182
+00:15:39,770 --> 00:15:42,980
+You have no tail,
+nor fangs or scales.
+
+183
+00:15:43,190 --> 00:15:45,440
+Your skin is soft, as well.
+
+184
+00:15:45,610 --> 00:15:48,780
+Well, that's only natural.
+I'm a human being.
+
+185
+00:15:48,980 --> 00:15:50,030
+"Human being"?
+
+186
+00:15:50,110 --> 00:15:52,900
+Right. A human being.
+A human. A person.
+
+187
+00:15:54,950 --> 00:15:57,580
+And what, exactly,
+is a human?
+
+188
+00:15:58,540 --> 00:16:02,750
+Huh? Well, a human is...
+Well, like you and me.
+
+189
+00:16:02,870 --> 00:16:05,210
+We look like this, we have
+a head, stuff like that.
+
+190
+00:16:05,630 --> 00:16:07,170
+There are others like us?
+
+191
+00:16:07,880 --> 00:16:10,380
+Sure. There are more.
+
+192
+00:16:10,550 --> 00:16:14,720
+Really? And all of them
+are the same as you?
+
+193
+00:16:14,800 --> 00:16:16,510
+They have the same face?
+
+194
+00:16:16,600 --> 00:16:20,560
+No, we're not all identical. It would be
+creepy if everyone had the same face.
+
+195
+00:16:20,890 --> 00:16:23,020
+It would?
+
+196
+00:16:23,850 --> 00:16:27,060
+Oh, the rain has stopped!
+
+197
+00:16:27,770 --> 00:16:29,690
+Hey, you're right.
+
+198
+00:16:34,780 --> 00:16:38,240
+I wonder why I am outside?
+
+199
+00:16:38,830 --> 00:16:41,240
+Um, I don't really know.
+
+200
+00:16:41,870 --> 00:16:43,750
+First things first, though,
+we need to get out of here.
+
+201
+00:16:44,080 --> 00:16:45,290
+Here.
+
+202
+00:16:45,540 --> 00:16:48,250
+You can't walk like that.
+Here, put these on.
+
+203
+00:16:48,500 --> 00:16:49,670
+All right.
+
+204
+00:16:53,090 --> 00:16:55,470
+My name is Nia.
+What is yours?
+
+205
+00:16:55,550 --> 00:16:58,430
+Who, me?
+I'm Simon.
+
+206
+00:16:58,640 --> 00:17:01,510
+Simon...
+What a fine name.
+
+207
+00:17:03,520 --> 00:17:04,680
+Thanks.
+
+208
+00:17:04,940 --> 00:17:06,100
+Tell me, Simon.
+
+209
+00:17:06,440 --> 00:17:07,230
+What?
+
+210
+00:17:07,520 --> 00:17:09,020
+What is that?
+
+211
+00:17:12,280 --> 00:17:13,780
+Hurry! This way!
+
+212
+00:17:17,410 --> 00:17:18,700
+Simon, what is that?
+
+213
+00:17:18,780 --> 00:17:22,700
+It's a Gunmen! Humans on the surface
+are at war against them!
+
+214
+00:17:22,790 --> 00:17:23,660
+At war?
+
+215
+00:17:23,750 --> 00:17:25,540
+If we don't fight them,
+they'll kill us!
+
+216
+00:17:26,120 --> 00:17:27,670
+Please, Lagann!
+
+217
+00:17:29,380 --> 00:17:30,540
+It worked!
+
+218
+00:17:48,980 --> 00:17:50,940
+Simon, are you all right?
+
+219
+00:17:51,070 --> 00:17:52,980
+Damn it, not again!
+
+220
+00:17:53,150 --> 00:17:57,990
+Why? Why won't you do
+as I tell you, Lagann?!
+
+221
+00:18:03,120 --> 00:18:04,290
+Run, Nia!
+
+222
+00:18:05,370 --> 00:18:08,120
+Once you start, keep running
+and don't look back.
+
+223
+00:18:09,000 --> 00:18:10,790
+I'll keep the Gunmen
+busy here.
+
+224
+00:18:11,210 --> 00:18:12,090
+But you--
+
+225
+00:18:12,130 --> 00:18:15,050
+I'm sick of it! I'm sick
+of watching people die!
+
+226
+00:18:15,420 --> 00:18:19,470
+I don't care what happens to me,
+just so long as no one else dies!
+
+227
+00:18:26,770 --> 00:18:28,980
+Do you really want to die?
+
+228
+00:18:29,520 --> 00:18:33,230
+If you are frightened, you should run.
+You mustn't die.
+
+229
+00:18:33,360 --> 00:18:35,270
+No, I'm not scared.
+
+230
+00:18:35,360 --> 00:18:36,860
+You mustn't lie, either.
+
+231
+00:18:38,780 --> 00:18:40,860
+Come, let's escape.
+Together.
+
+232
+00:18:50,960 --> 00:18:54,170
+I'm not gonna let anyone else die!
+
+233
+00:18:56,760 --> 00:18:58,590
+I'm here, too!
+
+234
+00:19:00,010 --> 00:19:03,050
+Kittan Stinger!
+
+235
+00:19:03,930 --> 00:19:08,560
+Hell's Headsplitter!!
+
+236
+00:19:10,060 --> 00:19:11,940
+I finally got a chance to use it!
+
+237
+00:19:25,280 --> 00:19:28,160
+First he deserts, and now he's
+got a woman on his arm?
+
+238
+00:19:29,580 --> 00:19:31,460
+Some are slender,
+some are fat,
+
+239
+00:19:31,540 --> 00:19:33,960
+...some are rounded,
+and some are angular.
+
+240
+00:19:34,290 --> 00:19:36,750
+Human beings certainly come in all
+shapes and sizes, don't they?
+
+241
+00:19:36,880 --> 00:19:40,130
+So you've never seen another
+human being before, have you?
+
+242
+00:19:40,470 --> 00:19:42,760
+No. Only my honorable father.
+
+243
+00:19:42,840 --> 00:19:44,430
+Honorable father, she says...
+
+244
+00:19:44,550 --> 00:19:45,680
+Thank you.
+
+245
+00:19:46,050 --> 00:19:47,640
+What's Old Coco doing here?
+
+246
+00:19:48,140 --> 00:19:49,060
+It's delicious!
+
+247
+00:19:49,180 --> 00:19:51,980
+So when you woke up, you'd been
+locked in that container...
+
+248
+00:19:52,060 --> 00:19:54,150
+...and thrown into that gorge
+for some reason?
+
+249
+00:19:54,230 --> 00:19:55,150
+Yes.
+
+250
+00:19:55,230 --> 00:19:58,610
+Do you remember any details
+about where your village is?
+
+251
+00:19:59,570 --> 00:20:00,280
+Village?
+
+252
+00:20:00,400 --> 00:20:01,940
+Where your house is.
+
+253
+00:20:02,030 --> 00:20:05,200
+I have no idea.
+I've never been outside before.
+
+254
+00:20:05,280 --> 00:20:08,700
+Father always said that
+the outside world was dangerous.
+
+255
+00:20:08,830 --> 00:20:13,290
+Well, he was right about that.
+I bet your father is worried about you.
+
+256
+00:20:13,750 --> 00:20:15,210
+I'm not so sure.
+
+257
+00:20:15,500 --> 00:20:19,800
+Well, I believe I may
+have angered him.
+
+258
+00:20:19,920 --> 00:20:20,880
+Why's that?
+
+259
+00:20:20,960 --> 00:20:25,680
+I asked him a question.
+"Why was I born?" I asked.
+
+260
+00:20:26,050 --> 00:20:30,310
+As soon as I said it,
+Father closed his heart to me.
+
+261
+00:20:31,560 --> 00:20:32,730
+I don't get it.
+
+262
+00:20:32,850 --> 00:20:35,770
+Your father sounds like
+an odd man.
+
+263
+00:20:41,690 --> 00:20:47,280
+Lagann... Are you going
+to abandon me, too?
+
+264
+00:20:50,370 --> 00:20:53,160
+What the hell do you
+want me to do, damn it?!
+
+265
+00:20:53,620 --> 00:20:56,370
+Can't I even avenge
+Kamina's death?!
+
+266
+00:20:58,790 --> 00:20:59,840
+Yoko.
+
+267
+00:20:59,920 --> 00:21:03,460
+Don't do it. Nothing you say
+can help him right now.
+
+268
+00:21:03,550 --> 00:21:06,680
+You'll only make the hole
+in his heart bigger.
+
+269
+00:21:09,430 --> 00:21:10,600
+What happened?!
+
+270
+00:21:13,730 --> 00:21:14,890
+What's going on?
+
+271
+00:21:16,560 --> 00:21:18,270
+Where's this water coming from?!
+
+272
+00:21:18,520 --> 00:21:20,940
+Wait a minute, something's coming!
+
+273
+00:21:21,020 --> 00:21:22,190
+What is it?
+
+274
+00:21:22,320 --> 00:21:23,440
+It's huge...
+
+275
+00:21:23,570 --> 00:21:26,740
+Simon! Where's Simon?!
+Where's Gurren Lagann?
+
+276
+00:21:38,750 --> 00:21:41,750
+There's no escape, human scum.
+
+277
+00:21:42,210 --> 00:21:43,340
+I know that voice...
+
+278
+00:21:43,420 --> 00:21:45,050
+Fire main cannon!
+
+279
+00:21:45,130 --> 00:21:47,050
+They're still being calibrated!
+
+280
+00:21:49,640 --> 00:21:50,390
+Rossiu!
+
+281
+00:21:50,470 --> 00:21:52,220
+I know!
+I'll go out in Gurren!
+
+282
+00:22:00,060 --> 00:22:01,060
+Nia?
+
+283
+00:22:03,860 --> 00:22:05,820
+Wha--? That idiot, is she trying
+to get herself killed?
+
+284
+00:22:10,320 --> 00:22:11,950
+Stop this, Adiane!
+
+285
+00:22:13,660 --> 00:22:14,740
+What?
+
+286
+00:22:14,830 --> 00:22:16,370
+Wait, is that--?
+
+287
+00:22:16,710 --> 00:22:20,000
+First Princess Nia, daughter of
+Spiral King Lordgenome, orders you!
+
+288
+00:22:20,080 --> 00:22:22,340
+Leave us, Adiane, the Elegant!
+
+289
+00:22:22,540 --> 00:22:24,550
+Are you aware of who I am?
+
+290
+00:22:31,010 --> 00:22:35,010
+<font color=#000000>To Be Continued...</font>
+
+291
+00:22:42,250 --> 00:22:48,480
+<font color=#FFFF00>Hikari wo motomete kage ha tawainai jooku wo shaberu
+</font>'Cuz they seek light, the shadows chatter out grade-school jokes
+
+292
+00:22:48,480 --> 00:22:54,460
+<font color=#FFFF00>Kikitai no ha sonna koto ja nai
+</font>I don't want to listen to that crap
+
+293
+00:23:00,930 --> 00:23:06,990
+<font color=#FFFF00>Taiyou motomete kage ha tamashii no nuketa koe kara
+</font>'Cuz they seek the sun, the shadows suddenly change from
+
+294
+00:23:06,990 --> 00:23:12,870
+<font color=#FFFF00>Kyuu ni surudoi kuchou ni kawaru
+</font>The soul's missing voice to a sharp tone of voice
+
+295
+00:23:13,030 --> 00:23:19,580
+<font color=#FFFF00>Sono oto ga machi no naka ni kodama-shite hibikinagara
+</font>While that sound echoed and bounced in the middle of town,
+
+296
+00:23:19,580 --> 00:23:25,620
+<font color=#FFFF00>Kemono no you na koe de sakebitsudzuketa
+</font>I kept on screaming in a beastly voice
+
+297
+00:23:25,660 --> 00:23:28,890
+<font color=#FFFF00>Kidou wo kaeta tsumori ha nai
+</font>No way I'm going to change my course
+
+298
+00:23:28,890 --> 00:23:32,090
+<font color=#FFFF00>Zankyou ha giratsuiteru ga
+</font>The reverb's dazzling, but
+
+299
+00:23:32,090 --> 00:23:35,130
+<font color=#FFFF00>Kussetsu-shite hanarete iku
+</font>It refracts and comes apart
+
+300
+00:23:35,130 --> 00:23:39,260
+<font color=#FFFF00>Koko no sekai ha itsumo kou da
+</font>The world right here is always like this
+
+301
+00:23:46,180 --> 00:23:52,700
+<font color=#FFFF00>Soto no sekai ni ha hikari ha aru no ka
+</font>Is there light in the world outside?
+
+302
+00:24:05,520 --> 00:24:08,520
+<b>Next Time</b>
+
+303
+00:24:06,480 --> 00:24:10,650
+Precious memories...
+Do they tie people down?
+
+304
+00:24:10,900 --> 00:24:13,570
+Or are they what saves them?
+
+305
+00:24:13,990 --> 00:24:16,070
+Next time on Gurren Lagann,
+
+306
+00:24:16,160 --> 00:24:20,540
+<b>Who Is This Bro?</b>
+
+307
+00:24:16,740 --> 00:24:19,580
+..."Who Is This Bro?"
+
