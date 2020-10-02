@@ -1,10 +1,10 @@
 #Functions for subtitle analysis
 
-fps1 = 1
-width1 = 640
-height1 = 320
+# fps1 = 1
+# width1 = 640
+# height1 = 320
 
-processMultiShows <- function(pathMultiShowsFolder, fps=1, width=640, height=320){
+processMultiShows <- function(pathMultiShowsFolder, fps=1, width=640, height=360){
   dir <- dir(pathMultiShowsFolder)
   foldersShows <- dir[ dir.exists(paste0("./", pathMultiShowsFolder, "/",dir))]
   pathShows <- paste0(pathMultiShowsFolder, "/", foldersShows)
@@ -15,18 +15,18 @@ processMultiShows <- function(pathMultiShowsFolder, fps=1, width=640, height=320
   return(NULL)
 }
 
-processShows <- function(pathShowFolder, fps=1, width=640, height=320){
+processShows <- function(pathShowFolder, fps=1, width=640, height=360){
   dir <- dir(pathShowFolder)
   foldersSeasons <- dir[ dir.exists(paste0("./", pathShowFolder, "/",dir))]
   pathSeasons <- paste0(pathShowFolder, "/", foldersSeasons)
   # print("Shows")
   # print(pathShowFolder)
   # print(pathSeasons)
-  sapply(pathSeasons, processSeason, fps=fps, width=640, height=320)
+  sapply(pathSeasons, processSeason, fps=fps, width=width, height=height)
   return(NULL)
 }
 
-processSeason <- function(pathSeasonFolder, fps=1, width=640, height=320){
+processSeason <- function(pathSeasonFolder, fps=1, width=640, height=360){
   # print("Seasons")
   # print(pathSeasonFolder)
   dir <- dir(pathSeasonFolder)
@@ -55,4 +55,10 @@ processSeason <- function(pathSeasonFolder, fps=1, width=640, height=320){
   return(NULL)
 }
 
-processMultiShows("./TestVideoExtraction")
+preProcess <- function(pathMultishowFolder, fps = 1, width=640, height=360){
+  processMultiShows(pathMultishowFolder, fps=fps, width=width, height=height)
+  print("Done!")
+  return(NULL)
+}
+
+# system.time(preProcess("./TestVideoExtraction", fps=2, width=640, height=360))

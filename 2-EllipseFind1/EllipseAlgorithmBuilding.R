@@ -32,7 +32,7 @@ library(VideoTrackingUtilities)
 # paramLineArea=2
 
 
-pathImageToLoad <- "./Test Pics/bike.jpg"
+pathImageToLoad <- "./Test Pics/FoodWarTests/test6.JPG"
 paramLineArea = 2
 # runJiaFanEllipses <- function(pathImageToLoad, 
 #                               pathFolderToMake = "outputtemp", 
@@ -1022,4 +1022,4 @@ saveCurrentOutputFolder <- function(folder,number){
 }
 
 # runJiaFanEllipses("./Test Pics/Danbooru8-6-20-1235pmEST/test2.jpg", paramLineArea = 0.5)
-# summaryRprof(paste0(pathStats, "/CNCThresholding.prof"))
+# summaryRprof(paste0(pathStats, "/ContourConnectivity.prof"))
