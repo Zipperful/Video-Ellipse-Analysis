@@ -809,26 +809,48 @@ paramCNC = 0.3
   centers34 <- matrix(0, nrow=length(pairs34), ncol=2)
   for(x in 1:length(pairs34)){
     print("x then midpoints34x")
-    print(x)
-    print(midpoints34[[x]])
+    # print(x)
+    # print(midpoints34[[x]])
     theilSlopes34 <- theilsenSlopes(midpoints34[[x]])
+    # print(theilSlopes34)
     theilSlopes43 <- theilsenSlopes(midpoints43[[x]])
     medSlope34 <- theilSlopes34[[1]]
+    # print(medSlope34)
     medSlope43 <- theilSlopes43[[1]]
     theilSlopes34 <- theilSlopes34[[2]]
+    # print(theilSlopes34)
     theilSlopes43 <- theilSlopes43[[2]]
     centers34[x,] <- findCenterFromMidpoints(midpoints34[[x]], midpoints43[[x]], medSlope34, medSlope43)
     
     #Using Centers, theilslopes, and interarc slopes to find parameters
+    # q1 = rab1, rab1, rab2, rab2 Slopes from contours in first two (using 34?)
+    # q2 = Sab1, Sab1, Sab2, Sab2 Slopes from theil lines of first two 
+    # q3 = rdc1, rdc2, rdc1, rdc2 Slopes from contours in next two (using 43?)
+    # q4 = Sdc1, Sdc2, Sdc2, Sdc1
     q1 <- slopes34[[x]]
     q3 <- slopes43[[x]]
     q2 <- theilSlopes34
     q4 <- theilSlopes43
+    print("Qs")
+    print(q1)
+    print(q2)
+    print(q3)
+    print(q4)
+    print("G")
     gs34 <- findGVals(q1, q2, q3, q4)
+    print(gs34)
+    print("B")
     bs34 <- findBVals(q1, q2, q3, q4)
+    print(bs34)
+    print("K")
     ks34 <- findKVals(gs34, bs34)
+    print(ks34)
+    print("N")
     ns34 <- findNVals(ks34, q1, q2)
+    print(ns34)
+    print("P")
     ps34 <- findPVals(ks34, ns34)
+    print(ps34)
     # findGVals
     # findBVals
     # findKVals
@@ -851,25 +873,29 @@ paramCNC = 0.3
     return( K )
   }
   findNVals <- function(K, slope1, slopes2){
-    NPlus <- sqrt(  (slope1-K)*(slopes2-K)/(1+slope1*K)/(1+slopes2*K)  )
-    # if(NPlus <= 1){
-    #   return(NPlus)
-    # } else {
-    #   return(1/NPlus)
-    # }
-    NPlus <- NPlus[ !is.na(NPlus) ]
-    NFlipped <- 1/NPlus[ NPlus <= 1 ]
-    NPlus[ NPlus <=1 ] <- 1/ NPlus[ NPlus <= 1 ]
+    NPlus <- sqrt(  abs( (slope1-K)*(slopes2-K)/(1+slope1*K)/(1+slopes2*K)  ) )
+    print(NPlus)
+    for(x in 1:length(NPlus)){
+      if(NPlus[x] >1){
+        NPlus[x] <- 1/NPlus[x]
+      } 
+    }
+    print(NPlus)
+    return(NPlus)
   }
   findPVals <- function(K, N){
-    if(N<=1){
-      return(atan(K))
-    } else {
-      return(atan(K)+pi/2)
+    P<-N
+    for(x in 1:length(N)){
+      if(N[x] <= 1){
+        P[x] <- atan(K[x])
+      } else {
+        P[x] <- atan(K[x])+pi/2
+      }
     }
+    return(P)
   }
   
-  accumulateNP <- function(N, P, center, arc1, arc2){
+  accumulateNPK <- function(N, P, center, arc1, arc2){
     
   }
   
