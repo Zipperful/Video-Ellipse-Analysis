@@ -1,0 +1,12 @@
+sample.interval=20000
+"spreadEdges" "table" "storeContours" 
+"spreadEdges" "table" "storeContours" 
+"storeContours" 
+"storeContours" 
+"storeContours" 
+"storeContours" 
+"aperm" "asplit" "unique.matrix" "unique" "factor" "table" "storeContours" 
+"t" "apply" "rotMatrixCCW" "table" "storeContours" 
+"t" "apply" "rotMatrixCCW" "table" "storeContours" 
+"t" "apply" "rotMatrixCCW" "table" "storeContours" 
+"factor" "table" "storeContours" 
