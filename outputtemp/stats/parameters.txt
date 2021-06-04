@@ -1,7 +1,0 @@
-Scale Parameter:  2
-Alpha Parameter:  0.2
-Sigma Parameter:  1
-Length Cutoff Parameter:  8
-Line Area Cutoff Parameter:  2
-Midpoint Calc Parameter:  16
-CNC Parameter:  0.3
