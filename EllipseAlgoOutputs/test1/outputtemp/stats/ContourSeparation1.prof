@@ -1,8 +1,0 @@
-sample.interval=20000
-"[<-" "runJiaFanEllipses" 
-"[<-" "runJiaFanEllipses" 
-"[<-" "runJiaFanEllipses" 
-"[<-" "runJiaFanEllipses" 
-"[<-" "runJiaFanEllipses" 
-"[<-" "runJiaFanEllipses" 
-"aperm" "apply" "t" "rotMatrixCW" "runJiaFanEllipses" 
